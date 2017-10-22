@@ -1,0 +1,12 @@
+.row
+  .col-lg-6
+    .form-group
+      label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
+        | First Name
+      =f.text_field :first_name, :id=>"first_name", :class=>"form-control", :placeholder=>"First Name"
+      span.error-msg.hidden 
+    .form-group
+      label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
+        | Last Name
+      =f.text_field :last_name, :id=>"last_name", :class=>"form-control", :placeholder=>"Last Name"
+      span.error-msg.hidden 

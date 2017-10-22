@@ -1,0 +1,19 @@
+=form_for [:admin, @subject] do |f|
+  .panel-body
+    ul.nav.nav-pills.post-tab
+      li.active
+        a target="details" href="#details" data-toggle="tab"
+          span.tab-title Details
+      li
+        a target="class_assignments" href="#class_assignments" data-toggle="tab"
+          span.tab-title Enlistment
+    .tab-content
+      #details.tab-pane.fade.in.active.mb50.mt30
+        =render 'subject_details',:f=>f
+      #class_assignments.tab-pane.fade.mb30.mt30
+        =render 'class_assignments',:f=>f
+  .row
+    .col-md-4
+    .col-xs-4.col-sm-4.col-md-4
+      button.btn.btn-lg.btn-success.btn-block#submit type="submit" value=("submit") Save  
+=render '/admin/partials/generic_js'

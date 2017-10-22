@@ -1,0 +1,13 @@
+=link_to_add_association '<i class="fa fa-plus-circle"></i> Add Subjects'.html_safe, f, :class_assignments, :class=>"btn btn-success add-item-btn add-class-assignments add-cocoon", :data=>{"association-insertion-method" => "prepend", "association-insertion-node"=>".class_assignments"}
+br
+br
+.class_assignments
+  =f.fields_for :class_assignments do |f|
+    div class="nested-fields"
+      .row
+        .col-md-7
+          .form-group
+            label 
+              | Subject
+              =f.select(:subject_id, options_from_collection_for_select(@subjects,:id,:subject_code, f.object.subject_id), {include_blank: '-- Select Teacher --'}, :id=>"subject_id", :class =>"form-control chosen-select")
+              span.error-msg.hidden

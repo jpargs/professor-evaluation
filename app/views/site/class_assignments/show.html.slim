@@ -1,0 +1,94 @@
+.container
+  /! Jumbotron Header
+  header.jumbotron.my-4
+    h1.display-6
+      | #{@class_assignment.teacher.name}
+    p.lead 
+      | #{@class_assignment.subject.full_subject_name}
+    p.lead
+      | Rating for this class: &#9733; #{get_average_for_class_assignment(@class_assignment.id)}
+    p.lead
+      | Overall Average: &#9733; #{get_overall_average(@class_assignment.teacher.id)}
+  .row.text-center
+    .col-lg-12.col-md-12.mb-12
+      h2
+        | Ratings
+      
+  .row.text-center
+    -@class_assignment.remarks.each do |remark|
+      .col-lg-3.col-md-6.mb-4
+        .card
+          .card-body
+            h4.card-title 
+              | #{remark.student.first_name} #{remark.student.last_name}
+            p.card-text 
+              -remark.rating.times do 
+                | &#9733;
+            p.card-text
+              =remark.remark.html_safe
+          .card-footer
+
+    -if @class_assignment.remarks.blank?
+      .col-md-12.text-center
+        h4 No availble ratings
+  .row.text-center
+    -if !current_student
+      .col-lg-12.col-md-12.mb-12
+        h2 You must login to grade teachers.
+    -elsif student_has_rated(current_student.id, @class_assignment.id)
+      .col-lg-12.col-md-12.mb-12
+        h2 You have already submitted a rating. thank you
+    -else
+      .col-lg-12.col-md-12.mb-12
+        h2
+          | Rate Me
+
+        =form_for [:site,@remark], :html => { :id=>"remark-form", "data-parsley-validate"=> "" } do |f|
+          .row
+            .col-md-12.text-center
+              .form-group.bs-callout.bs-callout-warning.hidden
+                h4 Invalid Fields
+                p please check fields
+              .form-group
+                  label 
+                    | Rate: 
+                  span.rating
+                  =f.hidden_field :rating, :class=> "main-rating", :id=> "main-rating", required: "", "data-parsley-trigger": "change"
+                  =f.hidden_field :student_id, :class=> "main-rating", value: (current_student.id if current_student || nil)
+                  =f.hidden_field :class_assignment_id, :class=> "main-rating", value: @class_assignment.id
+              .form-group
+                label 
+                  | Remark(Optional): 
+                =f.text_area :remark, :class=>"form-control summernote", :rows=>50, required: "", "data-parsley-trigger": "change"
+
+              .row
+                .col-xs-4.col-sm-4.col-md-4
+                .col-xs-4.col-sm-4.col-md-4
+                  button.btn.btn-lg.btn-success.btn-block#register type="submit" value=("Rate") Rate  
+                  
+  /! Page Features
+  .row.text-center
+=render '/site/partials/generic_js'
+
+
+javascript:
+  var ratings = document.getElementsByClassName('rating');
+
+  for (var i = 0; i < ratings.length; i++) {
+      var r = new SimpleStarRating(ratings[i]);
+
+      ratings[i].addEventListener('rate', function(e) {
+          $('#main-rating').val(e.detail)
+          
+      });
+  }
+  $(function () {
+    $('#remark-form').parsley().on('field:validated', function() {
+      var ok = $('.parsley-error').length === 0;
+      $('.bs-callout-info').toggleClass('hidden', !ok);
+      $('.bs-callout-warning').toggleClass('hidden', ok);
+    })
+    .on('form:submit', function() {
+      //return false; // Don't submit form for this demo
+    });
+  });

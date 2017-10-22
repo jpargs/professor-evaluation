@@ -1,0 +1,18 @@
+.container
+  /! Jumbotron Header
+  header.jumbotron.my-4
+    h1 Teachers
+    p.lead Select a teacher you want to view. You may use this resource to view the subjects that this teacher teaches. 
+
+  /! Page Features
+  .row.text-center
+    -@teachers.each do |teacher|
+      .col-lg-3.col-md-6.mb-4
+        .card
+          img.card-img-top alt="" src="http://placehold.it/500x325"
+          .card-body
+            h4.card-title 
+              | #{teacher.name}
+          .card-footer
+            a.btn.btn-primary href="/teachers/#{teacher.slug}"  Find Out More!
+  

@@ -1,0 +1,37 @@
+=render 'delete_modal'
+.content
+  .notice-container
+    -if notice.present?
+      .alert.alert-main.alert-success.alert-newversion
+        =notice.html_safe
+    -elsif error.present?
+      .alert.alert-main.alert-danger.alert-newversion
+        =error.html_safe
+  a#addStudents.btn.btn-success.pull-right.new.no-outline href="/admin/students/new" 
+    i.fa.fa-plus-circle.fa-fw
+    | New Student
+  table#datatable.display cellspacing="0" width="100%" 
+    thead
+      tr
+        th First Name
+        th Last Name
+        th Email
+        th.hide
+    tfoot
+      tr
+        th First Name
+        th Last Name
+        th Email
+        th
+    tbody
+      -@students.each do |student|
+        tr
+          td =student.first_name
+          td =student.last_name
+          td =student.email
+          td width="6%"
+            .data-buttons
+              a.edit-student.push-right.no-outline data-push="true" href="/admin/students/#{student.id}/edit" 
+                i.fa.fa-pencil.fa-fw
+              a.toggle-delete-modal.push-right.no-outline data-href='/admin/students/#{student.id}' href="#" data-type='student' 
+                i.fa.fa-trash-o.fa-fw

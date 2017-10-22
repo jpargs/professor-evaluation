@@ -1,0 +1,24 @@
+.container
+  /! Jumbotron Header
+  header.jumbotron.my-4
+    h1.display-6
+      | #{@subject.subject_code} - #{@subject.subject_name}
+    p.lead This site allows you to evaluate or check the evaluation of other students to professor of a class
+  
+  .row.text-center
+    .col-lg-12.col-md-12.mb-12
+      h2
+        | Available Teachers
+  /! Page Features
+  .row.text-center
+    -@subject.teachers.each do |teacher|
+      .col-lg-3.col-md-6.mb-4
+        .card
+          img.card-img-top alt="" src="http://placehold.it/500x325"
+          .card-body
+            h4.card-title 
+              | #{teacher.first_name} #{teacher.last_name}
+            p.card-text HERE ADD TEXT!
+          .card-footer
+            a.btn.btn-primary href="/class_assignments/#{get_slug(@subject.id, teacher.id)}"  Rate Me!
+  

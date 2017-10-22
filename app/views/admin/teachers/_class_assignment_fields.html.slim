@@ -1,0 +1,11 @@
+div class="nested-fields"
+  .row
+    .col-md-7
+      .form-group
+        label 
+          | Subject
+          =f.select(:subject_id, options_from_collection_for_select(@subjects,:id,:subject_code, f.object.subject_id), {include_blank: '-- Select Teacher --'}, :id=>"subject_id", :class =>"form-control chosen-select")
+          /=f.select(:member_id, options_from_collection_for_select(@members,:id,:full_name, f.object.member_id), {include_blank: '-- Select Member --'}, :id=>"member_id", :class =>"form-control chosen-select member-select")
+          =link_to_remove_association "",f, :type=>"button", :confirm=>"Are you sure?", :class=>"fa fa-plus-circle"
+          span.error-msg.hidden
+        

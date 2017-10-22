@@ -1,0 +1,18 @@
+.container
+  /! Jumbotron Header
+  header.jumbotron.my-4
+    h1 Subject
+    p.lead Select subjects you want to view. Use this resource to view available professors in specific subjects. 
+
+  /! Page Features
+  .row.text-center
+    -@subjects.each do |subject|
+      .col-lg-3.col-md-6.mb-4
+        .card
+          img.card-img-top alt="" src="http://placehold.it/500x325"
+          .card-body
+            h4.card-title 
+              | #{subject.subject_code} - #{subject.subject_name}
+          .card-footer
+            a.btn.btn-primary href="/subjects/#{subject.slug}"  Find Out More!
+  
