@@ -46,7 +46,7 @@ class Admin::SubjectsController < AdminController
   end
     
   def subjects_params
-    params.require(:subject).permit(:subject_code, :subject_name,class_assignments_attributes: [ :id, :teacher_id, :subject_id ])
+    params.require(:subject).permit(:subject_code, :subject_name,class_assignments_attributes: [ :id, :teacher_id, :subject_id, :_destroy ])
   end
 
 end

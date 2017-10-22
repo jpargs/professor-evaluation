@@ -1,5 +1,5 @@
 class Subject < ApplicationRecord
-  has_many :class_assignments, dependent: :nullify
+  has_many :class_assignments, :dependent => :destroy
   has_many :teachers, through: :class_assignments
   after_save :generate_slug
   accepts_nested_attributes_for :class_assignments, allow_destroy: true

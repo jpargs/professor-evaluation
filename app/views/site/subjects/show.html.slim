@@ -18,7 +18,8 @@
           .card-body
             h4.card-title 
               | #{teacher.first_name} #{teacher.last_name}
-            p.card-text HERE ADD TEXT!
+            p.card-text 
+              | Ave Rating: &#9733; #{get_average_for_class_assignment(find_class_assignment_id(@subject.id, teacher.id))}
           .card-footer
             a.btn.btn-primary href="/class_assignments/#{get_slug(@subject.id, teacher.id)}"  Rate Me!
   

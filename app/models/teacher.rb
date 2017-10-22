@@ -1,6 +1,6 @@
 class Teacher < ApplicationRecord
   has_many :remarks
-  has_many :class_assignments
+  has_many :class_assignments, :dependent => :destroy
   has_many :students, through: :remarks
   has_many :subjects, through: :class_assignments
   after_save :generate_slug

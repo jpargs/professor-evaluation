@@ -47,7 +47,7 @@ class Admin::TeachersController < AdminController
   private 
   
   def teachers_params
-    params.require(:teacher).permit(:first_name, :last_name,class_assignments_attributes: [ :id, :teacher_id, :subject_id ])
+    params.require(:teacher).permit(:first_name, :last_name,class_assignments_attributes: [ :id, :teacher_id, :subject_id, :_destroy ])
   end
 
 

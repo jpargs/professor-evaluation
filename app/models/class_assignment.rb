@@ -2,7 +2,7 @@ class ClassAssignment < ApplicationRecord
   belongs_to :subject
   belongs_to :teacher
   has_many :student_enlistments
-  has_many :remarks
+  has_many :remarks, :dependent => :destroy
   has_many :students, through: :student_enlistments
   accepts_nested_attributes_for :remarks, allow_destroy: true
   after_save :generate_slug
