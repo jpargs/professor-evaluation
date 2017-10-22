@@ -7,6 +7,10 @@ module ApplicationHelper
     ca.first.slug if ca.first.present?
   end
   
+  def find_class_assignment_id(subject_id, teacher_id)
+    ca = ClassAssignment.find_class_assignment_id(subject_id, teacher_id)
+    ca.first.id if ca.first.present?
+  end
   def student_has_rated(student_id, class_assignment_id)
     remark = Remark.check_for_current_student_rating(student_id, class_assignment_id)
     true if remark.present?

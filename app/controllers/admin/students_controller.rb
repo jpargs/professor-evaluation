@@ -11,7 +11,7 @@ class Admin::StudentsController < AdminController
 
   def create
     @student = Student.new(students_params)
-    asd
+
     if @student.save!
       flash[:notice] = "<strong>" + @student.name + "</strong> has been successfully added."
     end

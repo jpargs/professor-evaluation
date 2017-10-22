@@ -21,5 +21,10 @@ class ClassAssignment < ApplicationRecord
       .from("class_assignments")
       .where("subject_id = ? AND teacher_id = ?",subject_id,teacher_id)
   }
-
+  
+  scope :find_class_assignment_id,->(subject_id, teacher_id) {
+    select("id")
+      .from("class_assignments")
+      .where("subject_id = ? AND teacher_id = ?",subject_id,teacher_id)
+  }
 end

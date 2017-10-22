@@ -3,10 +3,10 @@
     .form-group
       label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
         | First Name
-      =f.text_field :first_name, :id=>"first_name", :class=>"form-control", :placeholder=>"First Name"
+      =f.text_field :first_name, :id=>"first_name", :class=>"form-control", :placeholder=>"First Name", required: "", "data-parsley-trigger": "change"
       span.error-msg.hidden 
     .form-group
       label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
         | Last Name
-      =f.text_field :last_name, :id=>"last_name", :class=>"form-control", :placeholder=>"Last Name"
+      =f.text_field :last_name, :id=>"last_name", :class=>"form-control", :placeholder=>"Last Name", required: "", "data-parsley-trigger": "change"
       span.error-msg.hidden 

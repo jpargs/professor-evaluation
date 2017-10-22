@@ -14,23 +14,22 @@
       h2
         | Ratings
       
-  .row.text-center
-    -@class_assignment.remarks.each do |remark|
-      .col-lg-3.col-md-6.mb-4
-        .card
-          .card-body
-            h4.card-title 
-              | #{remark.student.first_name} #{remark.student.last_name}
-            p.card-text 
-              -remark.rating.times do 
-                | &#9733;
-            p.card-text
-              =remark.remark.html_safe
-          .card-footer
+  
+  -@class_assignment.remarks.each do |remark|
+    .row
+      .col-lg-12.col-md-12.mb-12
+        h4
+          | #{remark.student.first_name.humanize} #{remark.student.last_name.humanize}
+        p
+          -remark.rating.times do 
+            | &#9733;
+        p
+          =remark.remark.html_safe
+    hr    
 
-    -if @class_assignment.remarks.blank?
-      .col-md-12.text-center
-        h4 No availble ratings
+  -if @class_assignment.remarks.blank?
+    .col-md-12.text-center
+      h4 No availble ratings
   .row.text-center
     -if !current_student
       .col-lg-12.col-md-12.mb-12
@@ -89,6 +88,6 @@ javascript:
       $('.bs-callout-warning').toggleClass('hidden', ok);
     })
     .on('form:submit', function() {
-      //return false; // Don't submit form for this demo
+      //return false; 
     });
   });

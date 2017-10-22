@@ -1,0 +1,6 @@
+=link_to_add_association '<i class="fa fa-plus-circle"></i> Add Subjects'.html_safe, f, :student_enlistments, :class=>"btn btn-success add-item-btn add-class-assignments add-cocoon", :data=>{"association-insertion-method" => "prepend", "association-insertion-node"=>".student_enlistments"}
+br
+br
+.student_enlistments
+  =f.fields_for :student_enlistments do |f|
+    =render 'student_enlistment_fields', :f=>f

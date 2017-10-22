@@ -13,6 +13,8 @@
           .card-body
             h4.card-title 
               | #{teacher.name}
+            p.card-text
+              | OVR Rating: &#9733; #{get_overall_average(teacher.id)}
           .card-footer
             a.btn.btn-primary href="/teachers/#{teacher.slug}"  Find Out More!
   

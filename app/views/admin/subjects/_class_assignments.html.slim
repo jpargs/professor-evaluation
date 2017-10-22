@@ -3,11 +3,4 @@ br
 br
 .class_assignments
   =f.fields_for :class_assignments do |f|
-    div class="nested-fields"
-      .row
-        .col-md-7
-          .form-group
-            label 
-              | Teacher
-              =f.select(:teacher_id, options_from_collection_for_select(@teachers,:id,:name, f.object.teacher_id), {include_blank: '-- Select Teacher --'}, :id=>"teacher_id", :class =>"form-control chosen-select")
-              span.error-msg.hidden
+    =render 'class_assignment_fields', :f=>f

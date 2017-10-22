@@ -1,0 +1,40 @@
+.content
+  .notice-container
+    -if notice.present?
+      .alert.alert-main.alert-success.alert-newversion
+        =notice.html_safe
+    -elsif error.present?
+      .alert.alert-main.alert-danger.alert-newversion
+        =error.html_safe
+  table#datatable.display cellspacing="0" width="100%" 
+    thead
+      tr
+        th Reviewer
+        th Teacher
+        th Subject
+        th Rating
+        th Date Rated
+        th.hide
+    tfoot
+      tr
+      th Reviewer
+      th Teacher
+      th Subject
+      th Rating
+      th Date Rated
+      th 
+    tbody
+      -@remarks.each do |remark|
+        tr
+          td =remark.student.name
+          td =remark.class_assignment.teacher.name
+          td =remark.class_assignment.subject.full_subject_name
+          td 
+            | &#9733; 
+            =remark.rating
+          td =remark.created_at.localtime.strftime('%d %b %Y %H:%M:%S')
+          td width="6%"
+            .data-buttons
+              a.edit-student.push-right.no-outline data-push="true" href="/admin/remarks/#{remark.id}" 
+                i.fa.fa-search.fa-fw
+        

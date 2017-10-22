@@ -1,0 +1,10 @@
+=form_for [:admin, @remark] do |f|
+  ul.nav.nav-pills.post-tab
+    li.active
+      a target="details" href="#details" data-toggle="tab"
+        span.tab-title Details
+    
+  #details.tab-pane.fade.in.active.mb50.mt30
+    =render 'remark_details',:f=>f
+
+

@@ -1,13 +1,30 @@
-=form_for [:admin, @student] do |f|
+=form_for [:admin, @student], :html => { :id=>"student-form", "data-parsley-validate"=> "" } do |f|
   ul.nav.nav-pills.post-tab
     li.active
       a target="details" href="#details" data-toggle="tab"
         span.tab-title Details
     
+  .row
+    .col-lg-6col-md-6.col-sm-6.col-xs-6 
+      .form-group.bs-callout.bs-callout-warning.hidden
+        h4 Invalid Fields
+        p please check fields  
   #details.tab-pane.fade.in.active.mb50.mt30
     =render 'student_details',:f=>f
+  
   .row
     .col-md-4
     .col-xs-4.col-sm-4.col-md-4
       button.btn.btn-lg.btn-success.btn-block#submit type="submit" value=("submit") Save  
   
+javascript:
+  $(function () {
+    $('#student-form').parsley().on('field:validated', function() {
+      var ok = $('.parsley-error').length === 0;
+      $('.bs-callout-info').toggleClass('hidden', !ok);
+      $('.bs-callout-warning').toggleClass('hidden', ok);
+    })
+    .on('form:submit', function() {
+      //return false; 
+    });
+  });  

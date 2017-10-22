@@ -3,10 +3,10 @@
     .form-group
       label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
         | Subject Code
-      =f.text_field :subject_code, :id=>"subject_code", :class=>"form-control", :placeholder=>"Subject Code"
+      =f.text_field :subject_code, :id=>"subject_code", :class=>"form-control", :placeholder=>"Subject Code", required: "", "data-parsley-trigger": "change"
       span.error-msg.hidden 
     .form-group
       label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
         | Subject Name
-      =f.text_field :subject_name, :id=>"subject_name", :class=>"form-control", :placeholder=>"Subject Name"
+      =f.text_field :subject_name, :id=>"subject_name", :class=>"form-control", :placeholder=>"Subject Name", required: "", "data-parsley-trigger": "change"
       span.error-msg.hidden 

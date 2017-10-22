@@ -1,0 +1,26 @@
+.row
+  .col-lg-6
+    .form-group
+      label.control-label.col-lg-3.col-md-3.col-sm-3.col-xs-3 for="description" 
+        | Student 
+      =text_field_tag 'student_name', @remark.student.name, :class=>"form-control", :readonly => "readonly"
+      /=f.text_field :first_name, :id=>"first_name", :class=>"form-control", :placeholder=>"First Name"
+      span.error-msg.hidden 
+    .form-group
+      label.control-label.col-lg-6.col-md-6.col-sm-6.col-xs-6 for="description" 
+        | Teacher Evaluated
+      =text_field_tag 'teacher_name', @remark.class_assignment.teacher.name, :class=>"form-control", :readonly => "readonly"
+    .form-group
+      label.control-label.col-lg-6.col-md-6.col-sm-6.col-xs-6 for="description" 
+        | Subject
+      =text_field_tag 'subject', @remark.class_assignment.subject.full_subject_name, :class=>"form-control", :readonly => "readonly"  
+    .form-group
+      label.control-label.col-lg-12.col-md-12.col-sm-12.col-xs-12 for="description" 
+        | Rating: 
+        | &#9733; 
+        =@remark.rating
+    .form-group
+      label.control-label.col-lg-6.col-md-6.col-sm-6.col-xs-6 for="description" 
+        | Remark
+      =text_area_tag 'remark', @remark.remark, size: "25x10", :class=>"form-control", :readonly => "readonly"  
+    
