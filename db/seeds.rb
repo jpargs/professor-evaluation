@@ -26,9 +26,9 @@ student = Student.create! :email => "dave@student.com", :password => "password2"
 student = Student.create! :email => "jack@student.com", :password => "password3", :first_name => "Jack", :last_name => "Wilshere"
 
 
-teacher = Teacher.create! :first_name => "Aaron", :last_name => "Ramsey"
-teacher = Teacher.create! :first_name => "Leo", :last_name => "Messi"
-teacher = Teacher.create! :first_name => "Tony", :last_name => "Hawk"
+teacher = Teacher.create! :first_name => "Aaron", :last_name => "Ramsey", :slug => "1-aaron-ramsey"
+teacher = Teacher.create! :first_name => "Leo", :last_name => "Messi", :slug => "2-leo-messi"
+teacher = Teacher.create! :first_name => "Tony", :last_name => "Hawk", :slug => "3-tony-hawk"
 
 
 subject = Subject.create! :subject_code => "Math 101", :subject_name => "Algebra", :slug => "1-Math-101-Algebra"
