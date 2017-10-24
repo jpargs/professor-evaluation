@@ -9,7 +9,7 @@
     -@teachers.each do |teacher|
       .col-lg-3.col-md-6.mb-4
         .card
-          img.card-img-top alt="" src="http://placehold.it/500x325"
+          img.card-img-top alt="" src="#{asset_path('avatar.png')}"
           .card-body
             h4.card-title 
               | #{teacher.name}
